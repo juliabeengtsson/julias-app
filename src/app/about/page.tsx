@@ -38,6 +38,7 @@ export default async function page() {
   try {
     const { data } = await fetchAPI(myQuery);
     const posts = data.posts.nodes;
+    console.log(posts)
 
     return (
       <div className="flex flex-col w-1/2 m-auto">

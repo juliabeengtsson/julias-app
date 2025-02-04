@@ -14,12 +14,15 @@ export default async function fetchAPI(query: string, variables?: unknown) {
             }),
         })
 
-        const data = res.json()
+        if (!res.ok) {
+            throw new Error(`Failed to fetch data: ${res.statusText}`);
+        }
+
+        const data = await res.json()
         return data;
 
     } catch(e) {
         console.error(e);
+        throw e;
     }
 }
-
-
